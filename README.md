@@ -1,6 +1,6 @@
 CRUDPROYECTOFINAL-2019310
 Jeremi Steven Ortiz Pérez 2019319
-Spencer Abinadi Ortiz Hernández 2019191
+Spencer Abinadi Ortiz Hernández 2019191 - CREACION Y REALIZACION DE LAS VISTAS
 Aldo Alejandro Rodríguez Sánchez 2019286
 Kevin Josué Paz Hernández 2019351
 Justyn Alexander Sandoval Paredes 2019636
