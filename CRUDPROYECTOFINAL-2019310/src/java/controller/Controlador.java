@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Persona;
+import modelDAO.PersonaDAO;
 
 /**
  *
@@ -18,15 +20,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Controlador extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+	String listar = "view/listar.jsp";
+    String add = "view/add.jsp";
+    String edit = "view/edit.jsp";
+    Persona nuevaPersona = new Persona();
+    PersonaDAO nuevaPersonaDao = new PersonaDAO();
+	int codigoPersona;
+	
+	
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -56,7 +57,49 @@ public class Controlador extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+		 
+		String acceso = "";
+        String action = request.getParameter("accion");
+        if (action.equalsIgnoreCase("listar")){
+            acceso = listar;
+        }
+		else if (action.equalsIgnoreCase("add")){
+			acceso = add;
+		}
+        else if (action.equalsIgnoreCase("Agregar")){
+			String DPI = request.getParameter("txtDPI");
+			String nombre = request.getParameter("txtNombre");
+			nuevaPersona.setDPI(DPI);
+			nuevaPersona.setNombrePersona(nombre);
+			nuevaPersonaDao.add(nuevaPersona);
+			acceso = listar;
+		}
+		else if (action.equalsIgnoreCase("editar")){
+			request.setAttribute("codPer", request.getParameter("codigoPersona"));
+			acceso = edit;
+		}			
+		else if (action.equalsIgnoreCase("Actualizar")){
+			codigoPersona = Integer.parseInt(request.getParameter("txtCodigoPersona"));
+			String DPI = request.getParameter("txtDPI");
+			String nombres =  request.getParameter("txtNombre");
+			nuevaPersona.setCodigoPersona(codigoPersona);
+			nuevaPersona.setDPI(DPI);
+			nuevaPersona.setNombrePersona(nombres);
+			nuevaPersonaDao.edit(nuevaPersona);
+			acceso = listar;
+		}
+		else if (action.equalsIgnoreCase("eliminar")){
+			codigoPersona =  Integer.parseInt(request.getParameter("codigoPersona"));
+			nuevaPersona.setCodigoPersona(codigoPersona);
+			nuevaPersonaDao.eliminar(codigoPersona);
+			acceso = listar;
+			
+			
+		}
+		
+        RequestDispatcher vista = request.getRequestDispatcher(acceso);
+        vista.forward(request, response);
+
     }
 
     /**
