@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("BebasNeue-Regular.ttf");
+}
+
+
+
+@keyframes fadeInDown {
+    0%{
+        -webkit-transform: translateY(-80px);
+        opacity:0;        
+   }
+
+    100% {
+        -webkit-transform: translateY(0px);
+        opacity:1;
+   }
+}
+@keyframes levitate{
+    0% {
+           -webkit-transform: translateY(-15px);
+     }
+      50% {
+        -webkit-transform: translateY(0px);
+     }
+  100%{
+       -webkit-transform: translateY(-15px);
+  }
+  
+}
+header{
+    background-color:  #212121;
+    color: white;
+    width: 100%;
+    display: flex;
+    
+}
+html{
+    height: 100%;
+}
+body{
+    background:  url(fondo.jpg);
+    background-size: 100%;
+    height: 100vh;
+    
+    
+}
+.listar{
+    display:flex; 
+    align-items: center; 
+    margin-left: auto; 
+    padding: 7px;
+}
+
+.listar:hover{
+    background-color:  #2E2E2E;
+}
+
+.link{  
+    font-family: Bebas Neue;
+    color: white;
+    font-size: 20px;
+}
+
+.link:hover{
+    color:white;
+    font-size: 22px;
+    text-decoration: none;
+}
+img{
+    width:25vw;
+    height: 24vh;
+}
+
+.imagen{
+    display: inline-flex;
+    width: 100%;
+     animation: fadeInDown 4s 1, levitate 3s infinite;
+}
+.tablas{
+    animation: fadeInDown 4s 1, levitate 2s 1;
+}
+
+.caja{
+    background-color: rgba(255,255,255,0.8);
+    box-shadow: 2px 3px 4px #2E2E2E;
+    border-radius: 10px;
+    padding: 10px;
+    
+}

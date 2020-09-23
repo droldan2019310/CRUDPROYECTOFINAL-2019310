@@ -7,7 +7,9 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,11 +20,12 @@ import modelDAO.PersonaDAO;
  *
  * @author Jeremi Ortiz
  */
+@WebServlet(name = "Controlador", urlPatterns = {"/Controlador"})
 public class Controlador extends HttpServlet {
 
-	String listar = "view/listar.jsp";
-    String add = "view/add.jsp";
-    String edit = "view/edit.jsp";
+    String listar = "View/listar.jsp";
+    String add = "View/add.jsp";
+    String edit = "View/editar.jsp";
     Persona nuevaPersona = new Persona();
     PersonaDAO nuevaPersonaDao = new PersonaDAO();
 	int codigoPersona;

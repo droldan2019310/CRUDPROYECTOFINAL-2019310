@@ -61,7 +61,7 @@ public class PersonaDAO implements CRUD{
         try{
             con = conect.getConection();
             ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
+            ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -75,7 +75,7 @@ public class PersonaDAO implements CRUD{
         try{
             con = conect.getConection();
             ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
+            ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -88,7 +88,7 @@ public class PersonaDAO implements CRUD{
         try{
             con = conect.getConection();
             ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
+            ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
         }
